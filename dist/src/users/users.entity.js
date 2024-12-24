@@ -10,25 +10,54 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserEntity = void 0;
+const graphql_1 = require("@nestjs/graphql");
+const class_validator_1 = require("class-validator");
 const typeorm_1 = require("typeorm");
 let UserEntity = class UserEntity {
     id;
-    username;
-    password;
+    email;
+    firstName;
+    lastName;
+    createdAt;
+    updatedAt;
 };
 exports.UserEntity = UserEntity;
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
-    __metadata("design:type", Number)
+    (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
 ], UserEntity.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ unique: true }),
+    (0, typeorm_1.Column)({ type: 'varchar', nullable: false, unique: true }),
+    (0, graphql_1.Field)(),
+    (0, class_validator_1.IsEmail)(),
+    (0, typeorm_1.Index)(),
+    (0, class_validator_1.MinLength)(5),
     __metadata("design:type", String)
-], UserEntity.prototype, "username", void 0);
+], UserEntity.prototype, "email", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ type: 'varchar', nullable: false }),
+    (0, graphql_1.Field)(),
+    (0, class_validator_1.Length)(2, 55),
     __metadata("design:type", String)
-], UserEntity.prototype, "password", void 0);
+], UserEntity.prototype, "firstName", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'varchar', nullable: false }),
+    (0, graphql_1.Field)(),
+    (0, class_validator_1.Length)(2, 55),
+    __metadata("design:type", String)
+], UserEntity.prototype, "lastName", void 0);
+__decorate([
+    (0, typeorm_1.CreateDateColumn)({ type: 'timestamptz' }),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", Date)
+], UserEntity.prototype, "createdAt", void 0);
+__decorate([
+    (0, typeorm_1.UpdateDateColumn)({ type: 'timestamptz' }),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", Date)
+], UserEntity.prototype, "updatedAt", void 0);
 exports.UserEntity = UserEntity = __decorate([
-    (0, typeorm_1.Entity)('user')
+    (0, typeorm_1.Entity)(),
+    (0, graphql_1.ObjectType)()
 ], UserEntity);
