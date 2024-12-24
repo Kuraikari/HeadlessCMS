@@ -7,37 +7,34 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   Index,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 
-@Entity('user')
+@Entity('field')
 @ObjectType()
-export class UserEntity {
+export class FieldEntity {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
-  id: string;
+  id: string
 
   @Column({ type: 'varchar', nullable: false, unique: true })
   @Field()
-  @IsEmail()
   @Index()
   @MinLength(5)
-  email: string;
+  slug: string
 
   @Column({ type: 'varchar', nullable: false })
   @Field()
-  @Length(2, 55)
-  firstName: string;
+  @MinLength(5)
+  displayName: string
 
   @Column({ type: 'varchar', nullable: false })
   @Field()
-  @Length(2, 55)
-  lastName: string;
+  @MinLength(5)
+  description: string
 
-  @CreateDateColumn({ type: 'timestamptz' })
-  @Field()
-  createdAt?: Date;
-
-  @UpdateDateColumn({ type: 'timestamptz' })
-  @Field()
-  updatedAt?: Date;
+  @ManyToOne(() => FieldEntity)
+  @JoinColumn({ name: 'content_id'})
+  dummyField: unknown
 }

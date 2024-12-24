@@ -9,29 +9,26 @@ import {
   Index,
 } from 'typeorm';
 
-@Entity('user')
-@ObjectType()
-export class UserEntity {
+export abstract class BaseContentEntity {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
   id: string;
 
   @Column({ type: 'varchar', nullable: false, unique: true })
   @Field()
-  @IsEmail()
   @Index()
   @MinLength(5)
-  email: string;
+  slug: string;
 
   @Column({ type: 'varchar', nullable: false })
   @Field()
-  @Length(2, 55)
-  firstName: string;
+  @MinLength(5)
+  displayName: string;
 
   @Column({ type: 'varchar', nullable: false })
   @Field()
-  @Length(2, 55)
-  lastName: string;
+  @MinLength(5)
+  description: string;
 
   @CreateDateColumn({ type: 'timestamptz' })
   @Field()

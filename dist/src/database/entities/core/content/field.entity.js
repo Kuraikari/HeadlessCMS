@@ -9,55 +9,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserEntity = void 0;
+exports.FieldEntity = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const class_validator_1 = require("class-validator");
 const typeorm_1 = require("typeorm");
-let UserEntity = class UserEntity {
+let FieldEntity = class FieldEntity {
     id;
-    email;
-    firstName;
-    lastName;
-    createdAt;
-    updatedAt;
+    slug;
+    displayName;
+    description;
+    dummyField;
 };
-exports.UserEntity = UserEntity;
+exports.FieldEntity = FieldEntity;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
     (0, graphql_1.Field)(() => graphql_1.ID),
     __metadata("design:type", String)
-], UserEntity.prototype, "id", void 0);
+], FieldEntity.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'varchar', nullable: false, unique: true }),
     (0, graphql_1.Field)(),
-    (0, class_validator_1.IsEmail)(),
     (0, typeorm_1.Index)(),
     (0, class_validator_1.MinLength)(5),
     __metadata("design:type", String)
-], UserEntity.prototype, "email", void 0);
+], FieldEntity.prototype, "slug", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'varchar', nullable: false }),
     (0, graphql_1.Field)(),
-    (0, class_validator_1.Length)(2, 55),
+    (0, class_validator_1.MinLength)(5),
     __metadata("design:type", String)
-], UserEntity.prototype, "firstName", void 0);
+], FieldEntity.prototype, "displayName", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'varchar', nullable: false }),
     (0, graphql_1.Field)(),
-    (0, class_validator_1.Length)(2, 55),
+    (0, class_validator_1.MinLength)(5),
     __metadata("design:type", String)
-], UserEntity.prototype, "lastName", void 0);
+], FieldEntity.prototype, "description", void 0);
 __decorate([
-    (0, typeorm_1.CreateDateColumn)({ type: 'timestamptz' }),
-    (0, graphql_1.Field)(),
-    __metadata("design:type", Date)
-], UserEntity.prototype, "createdAt", void 0);
-__decorate([
-    (0, typeorm_1.UpdateDateColumn)({ type: 'timestamptz' }),
-    (0, graphql_1.Field)(),
-    __metadata("design:type", Date)
-], UserEntity.prototype, "updatedAt", void 0);
-exports.UserEntity = UserEntity = __decorate([
-    (0, typeorm_1.Entity)('user'),
+    (0, typeorm_1.ManyToOne)(() => FieldEntity),
+    (0, typeorm_1.JoinColumn)({ name: 'content_id' }),
+    __metadata("design:type", Object)
+], FieldEntity.prototype, "dummyField", void 0);
+exports.FieldEntity = FieldEntity = __decorate([
+    (0, typeorm_1.Entity)('field'),
     (0, graphql_1.ObjectType)()
-], UserEntity);
+], FieldEntity);
