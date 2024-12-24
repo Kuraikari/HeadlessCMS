@@ -1,18 +1,20 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom/client';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import App from './src/pages/App';
-
-const client = new ApolloClient({
-  uri: 'https://localhost:4201',
-  cache: new InMemoryCache(),
-});
+import { ApolloProvider } from '@apollo/client';
+import { AppProps } from 'next/app';
+import useApollo from './src/hooks/useApollo';
+import './src/styles/base.css';
 
 // Supported in React 18+
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 
-root.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
-);
+function App({ Component, pageProps}: AppProps) {
+  const client = useApollo(pageProps)
+  return (
+    <ApolloProvider client={client}>
+      <Component {...pageProps} />
+    </ApolloProvider>
+  )
+}
+
+export default App

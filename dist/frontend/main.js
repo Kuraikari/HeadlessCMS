@@ -39,11 +39,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
 const ReactDOM = __importStar(require("react-dom/client"));
 const client_1 = require("@apollo/client");
-const App_1 = __importDefault(require("./src/pages/App"));
+const layout_1 = __importDefault(require("./src/app/layout"));
+const page_1 = __importDefault(require("./src/app/page"));
 const client = new client_1.ApolloClient({
     uri: 'https://localhost:4201',
     cache: new client_1.InMemoryCache(),
 });
 // Supported in React 18+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render((0, jsx_runtime_1.jsx)(client_1.ApolloProvider, { client: client, children: (0, jsx_runtime_1.jsx)(App_1.default, {}) }));
+root.render((0, jsx_runtime_1.jsx)(client_1.ApolloProvider, { client: client, children: (0, jsx_runtime_1.jsx)(layout_1.default, { children: (0, jsx_runtime_1.jsx)(page_1.default, {}) }) }));

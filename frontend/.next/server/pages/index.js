@@ -1,8 +1,0 @@
-"use strict";(()=>{var e={};e.id=332,e.ids=[332],e.modules={6410:(e,t,r)=>{r.r(t),r.d(t,{config:()=>x,default:()=>S,getServerSideProps:()=>v,getStaticPaths:()=>m,getStaticProps:()=>b,reportWebVitals:()=>h,routeModule:()=>A,unstable_getServerProps:()=>j,unstable_getServerSideProps:()=>q,unstable_getStaticParams:()=>f,unstable_getStaticPaths:()=>_,unstable_getStaticProps:()=>M});var s={};r.r(s),r.d(s,{default:()=>P});var a=r(8597),i=r(3203),n=r(9243),o=r(3691),l=r.n(o),u=r(5475),d=r.n(u),p=r(8732);let c=require("@apollo/client"),g=(0,c.gql)`
-  query GetPosts {
-    getPosts {
-      id
-      title
-    }
-  }
-`;function P(){let{loading:e,error:t,data:r}=(0,c.useQuery)(g);return e?(0,p.jsx)("p",{children:"Loading..."}):t?(0,p.jsxs)("p",{children:["Error: ",t.message]}):(0,p.jsxs)("div",{children:[(0,p.jsx)("h1",{children:"Posts"}),r.getPosts.map(e=>(0,p.jsx)("div",{children:e.title},e.id))]})}let S=(0,n.M)(s,"default"),b=(0,n.M)(s,"getStaticProps"),m=(0,n.M)(s,"getStaticPaths"),v=(0,n.M)(s,"getServerSideProps"),x=(0,n.M)(s,"config"),h=(0,n.M)(s,"reportWebVitals"),M=(0,n.M)(s,"unstable_getStaticProps"),_=(0,n.M)(s,"unstable_getStaticPaths"),f=(0,n.M)(s,"unstable_getStaticParams"),j=(0,n.M)(s,"unstable_getServerProps"),q=(0,n.M)(s,"unstable_getServerSideProps"),A=new a.PagesRouteModule({definition:{kind:i.A.PAGES,page:"/index",pathname:"/",bundlePath:"",filename:""},components:{App:d(),Document:l()},userland:s})},361:e=>{e.exports=require("next/dist/compiled/next-server/pages.runtime.prod.js")},2015:e=>{e.exports=require("react")},8732:e=>{e.exports=require("react/jsx-runtime")},3873:e=>{e.exports=require("path")}};var t=require("../webpack-runtime.js");t.C(e);var r=e=>t(t.s=e),s=t.X(0,[131,741],()=>r(6410));module.exports=s})();
