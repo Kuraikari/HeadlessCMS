@@ -1,0 +1,13 @@
+@import "./_variables.css";
+@import "./_layers.css";
+
+@layer components {
+    :root {
+        font-family: var(--font-family);
+    }
+
+    body {
+        background-color: var(--primary-bg-color);
+        color: var(--primary-text-color);
+    }
+}

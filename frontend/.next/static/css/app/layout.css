@@ -1,0 +1,45 @@
+/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/styles/_variables.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************/
+@property --primary-text-color {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #fff;
+}
+
+@property --primary-bg-color {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #2e2e3f;
+}
+
+@property --font-family {
+    syntax: "<custom-ident>#";
+    inherits: true;
+    initial-value: Verdana, Geneva, Tahoma, sans-serif;
+}
+/*!********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/styles/_layers.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************/
+@layer reset, components, utilities, overrides;
+
+@layer reset {
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/styles/base.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************/
+@layer components {
+    :root {
+        font-family: var(--font-family);
+    }
+
+    body {
+        background-color: var(--primary-bg-color);
+        color: var(--primary-text-color);
+    }
+}

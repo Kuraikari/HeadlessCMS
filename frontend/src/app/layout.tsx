@@ -2,6 +2,8 @@ import React from "react"
 import { Header } from "../components/layout/Header"
 import { Footer } from "../components/layout/Footer"
 
+import '../styles/base.css';
+
 export default function DashboardLayout({
     children,
   }: {
